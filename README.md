@@ -302,6 +302,7 @@ CI is handled via GitHub Actions, and the stack is fully containerized with Dock
 ## License
 
 This project is for educational purposes.
+
 ---
 
 <div align="center">
