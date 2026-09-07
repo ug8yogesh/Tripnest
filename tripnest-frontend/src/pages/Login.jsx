@@ -147,7 +147,7 @@ const Login = () => {
 
           {/* Google OAuth Button */}
           <a
-            href="http://localhost:8080/oauth2/authorization/google"
+            href={`${import.meta.env.VITE_API_URL || "http://localhost:8080"}/oauth2/authorization/google`}
             className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-slate-800 bg-slate-950/60 hover:bg-slate-800/80 hover:border-slate-700 text-slate-200 text-sm font-medium transition duration-200"
           >
             <img
