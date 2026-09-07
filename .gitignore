@@ -1,0 +1,28 @@
+# Dependencies & Build artifacts
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+target/
+**/target/
+
+# Environment & Secret files
+.env
+*.env
+application-local.properties
+
+# Uploads & Media
+uploads/
+**/uploads/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Logs
+*.log

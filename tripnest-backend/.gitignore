@@ -1,0 +1,26 @@
+# Maven & Build artifacts
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+
+# Environment & Secrets
+.env
+application-local.properties
+
+# Uploads directory
+uploads/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

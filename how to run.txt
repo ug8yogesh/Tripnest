@@ -1,0 +1,27 @@
+Start the backend (from the tripnest-backend folder, where docker-compose.yml is):
+
+docker compose up -d
+
+The -d runs it in the background so you get your terminal back.
+
+Check it's running:
+
+docker compose ps
+
+View logs (if you want to watch it):
+
+docker compose logs backend -f
+
+(Ctrl+C just exits the log view, doesn't stop the container)
+
+Stop the backend:
+
+docker compose down
+
+This stops and removes the containers, but your database data stays safe (stored in a Docker volume). Next time you run docker compose up -d, your data — trips, users, destinations — will still be there.
+
+Only if you want to wipe all data and start fresh:
+
+docker compose down -v
+
+(-v deletes the volumes too — don't run this unless you actually want to reset everything)

@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-tripnest}
+      POSTGRES_USER: ${POSTGRES_USER:-tripnest}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-tripnest}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - tripnest-postgres:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./tripnest-backend
+    depends_on:
+      - postgres
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-tripnest}
+      DB_USERNAME: ${POSTGRES_USER:-tripnest}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-tripnest}
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET must be set}
+      UPLOAD_DIR: /app/uploads
+      OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY:-}
+      GOOGLE_MAPS_API_KEY: ${GOOGLE_MAPS_API_KEY:-}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      MAIL_HOST: ${MAIL_HOST:-smtp.gmail.com}
+      MAIL_PORT: ${MAIL_PORT:-587}
+      MAIL_USERNAME: ${MAIL_USERNAME:-}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:-}
+    volumes:
+      - tripnest-uploads:/app/uploads
+
+volumes:
+  tripnest-postgres:
+  tripnest-uploads:
